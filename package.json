@@ -1,0 +1,37 @@
+{
+  "name": "use-shared-state",
+  "version": "1.0.7",
+  "author": "Martin Aranda <arandaschimpf@gmail.com>",
+  "description": "React Hook factory to share state between components.",
+  "directories": {
+    "lib": "src",
+    "test": "tests"
+  },
+  "files": [
+    "package.json",
+    "use-shared-state.d.ts",
+    "use-shared-state.js"
+  ],
+  "license": "MIT",
+  "main": "use-shared-state.js",
+  "repository": "github:arandaschimpf/use-shared-state",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "tsc",
+    "test": "mocha -r chai/register-expect -r ts-node/register tests/**/*.spec.tsx"
+  },
+  "types": "./use-shared-state.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/react": "^16.8.23",
+    "@types/react-test-renderer": "^16.8.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "react": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
