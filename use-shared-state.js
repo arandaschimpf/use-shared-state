@@ -32,13 +32,17 @@ function createSharedState(initialValue) {
         var memoizedSetState = react_1.useCallback(function setState(newValue) {
             value = setValue(newValue, value);
             listeners.forEach(function (listener) { return listener(value); });
-        }, [listeners]);
+        }, []);
         var _a = __read(react_1.useState(value), 2), setLocalState = _a[1];
         listeners.add(setLocalState);
         react_1.useEffect(function () { return function () {
             listeners.delete(setLocalState);
         }; }, [setLocalState]);
-        return [value, memoizedSetState];
+        var result = [
+            value,
+            memoizedSetState
+        ];
+        return result;
     };
 }
 exports.default = createSharedState;

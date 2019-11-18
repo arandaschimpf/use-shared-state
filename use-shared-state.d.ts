@@ -1,1 +1,2 @@
-export default function createSharedState<T>(initialValue?: T | (() => T)): () => (T | ((newValue: T | ((prev?: T | undefined) => T)) => void))[];
+/// <reference types="react" />
+export default function createSharedState<T>(initialValue?: React.SetStateAction<T>): () => [T, import("react").Dispatch<import("react").SetStateAction<T>>];
