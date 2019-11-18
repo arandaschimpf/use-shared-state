@@ -8,7 +8,7 @@ function setValue(setter: any, previous?: any) {
   }
 }
 
-export default function createSharedState<T>(initialValue?: T | (() => T)) {
+export default function createSharedState<T>(initialValue?: React.SetStateAction<T>) {
   let value: T = setValue(initialValue)
 
   let listeners: Set<React.Dispatch<React.SetStateAction<T>>> = new Set()
