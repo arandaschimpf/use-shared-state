@@ -8,9 +8,6 @@ function setValue(setter: any, previous?: any) {
   }
 }
 
-type setter<T> = (prev?: T) => T
-export type setterFunction<T> = (newValue?: T | setter<T>) => void
-
 export default function createSharedState<T>(initialValue?: T | (() => T)) {
   let value: T = setValue(initialValue)
 
@@ -18,7 +15,7 @@ export default function createSharedState<T>(initialValue?: T | (() => T)) {
 
   return function useSharedState() {
     const memoizedSetState = useCallback(
-      function setState(newValue?: T | setter<T>) {
+      function setState(newValue?: React.SetStateAction<T>) {
         value = setValue(newValue, value)
         listeners.forEach(listener => listener(value))
       },
@@ -33,7 +30,10 @@ export default function createSharedState<T>(initialValue?: T | (() => T)) {
       },
       [setLocalState]
     )
-    const result: [T, setterFunction<T>] = [value, memoizedSetState]
+    const result: [T, React.Dispatch<React.SetStateAction<T>>] = [
+      value,
+      memoizedSetState
+    ]
     return result
   }
 }
